@@ -44,7 +44,6 @@
         <li><a href="#portfolio" class="nav__link">Portfólio</a></li>
         <li><a href="#ensaios" class="nav__link">Ensaios</a></li>
         <li><a href="#eventos" class="nav__link">Eventos</a></li>
-        <li><a href="#servicos" class="nav__link">Serviços</a></li>
         <li><a href="#contato" class="nav__link">Contato</a></li>
       </ul>
 
@@ -141,7 +140,7 @@
             </div>
             <div class="sobre__img-frame" aria-hidden="true"></div>
           </div>
-          <div class="sobre__stats" aria-label="Estatísticas">
+          <div class="sobre__stats" aria-label="Estatísticas" style="display:none">
             <div class="sobre__stat">
               <span class="sobre__stat-num" data-target="200">0</span><span>+</span>
               <p>Sessões realizadas</p>
@@ -186,14 +185,15 @@
   <section id="portfolio" class="portfolio section" aria-label="Portfólio">
     <div class="container">
       <div class="section__header" data-scroll-reveal>
-        <span class="section__eyebrow">Trabalhos selecionados</span>
+        <span class="section__eyebrow">Mural de Fotografias Lipe.Vision</span>
         <h2 class="section__title">Portfólio</h2>
       </div>
 
       <!-- Filtros de categoria -->
       <div class="portfolio__filters" role="tablist" aria-label="Filtrar por categoria" data-scroll-reveal>
-        <button class="portfolio__filter active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-        <button class="portfolio__filter" data-filter="eventos" role="tab" aria-selected="false">Festas &amp; Eventos</button>
+        <button class="portfolio__filter active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+        <button class="portfolio__filter" data-filter="festas" role="tab" aria-selected="false">Festas</button>
+        <button class="portfolio__filter" data-filter="eventos" role="tab" aria-selected="false">Eventos</button>
         <button class="portfolio__filter" data-filter="casamentos" role="tab" aria-selected="false">Casamentos</button>
         <button class="portfolio__filter" data-filter="ensaios" role="tab" aria-selected="false">Ensaios</button>
         <button class="portfolio__filter" data-filter="editorial" role="tab" aria-selected="false">Editorial</button>
@@ -321,159 +321,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════ SERVIÇOS ════════════════════════════════════ -->
-  <section id="servicos" class="servicos section" aria-label="Serviços">
-    <div class="container">
-      <div class="section__header" data-scroll-reveal>
-        <span class="section__eyebrow">O que ofereço</span>
-        <h2 class="section__title">Serviços</h2>
-        <p class="section__desc">Cada projeto é único. Converse comigo para criar um pacote personalizado.</p>
-      </div>
-
-      <div class="servicos__grid" data-scroll-reveal>
-
-        <article class="servico__card" tabindex="0" aria-label="Cobertura de Eventos">
-          <div class="servico__icon" aria-hidden="true"><i class="ri-camera-lens-line"></i></div>
-          <h3 class="servico__title">Cobertura de Eventos</h3>
-          <p class="servico__desc">Documentação completa de eventos com fotógrafo dedicado, edição profissional e entrega digital organizada.</p>
-          <ul class="servico__features" role="list">
-            <li>Edição profissional inclusa</li>
-            <li>Entrega em galeria online</li>
-            <li>Arquivo em alta resolução</li>
-          </ul>
-          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
-        </article>
-
-        <article class="servico__card servico__card--featured" tabindex="0" aria-label="Ensaios Fotográficos">
-          <div class="servico__badge" aria-label="Mais popular">Popular</div>
-          <div class="servico__icon" aria-hidden="true"><i class="ri-user-3-line"></i></div>
-          <h3 class="servico__title">Ensaios Fotográficos</h3>
-          <p class="servico__desc">Sessões individuais, de casal ou família, em locação ou estúdio, com direção de pose e luz personalizada.</p>
-          <ul class="servico__features" role="list">
-            <li>Direção fotográfica inclusa</li>
-            <li>Múltiplos cenários</li>
-            <li>Seleção colaborativa</li>
-          </ul>
-          <a href="#contato" class="btn btn--primary servico__btn">Solicitar orçamento</a>
-        </article>
-
-        <article class="servico__card" tabindex="0" aria-label="Retratos Profissionais">
-          <div class="servico__icon" aria-hidden="true"><i class="ri-id-card-line"></i></div>
-          <h3 class="servico__title">Retratos Profissionais</h3>
-          <p class="servico__desc">Headshots e fotos de perfil para executivos, criadores de conteúdo e profissionais liberais.</p>
-          <ul class="servico__features" role="list">
-            <li>Múltiplas variações</li>
-            <li>Fundo removível</li>
-            <li>Entrega rápida</li>
-          </ul>
-          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
-        </article>
-
-        <article class="servico__card" tabindex="0" aria-label="Produções Editoriais">
-          <div class="servico__icon" aria-hidden="true"><i class="ri-scissors-cut-line"></i></div>
-          <h3 class="servico__title">Produções Editoriais</h3>
-          <p class="servico__desc">Editoriais de moda, beleza e arte com planejamento de produção completo — direção, styling e pós-produção.</p>
-          <ul class="servico__features" role="list">
-            <li>Direção de arte</li>
-            <li>Colaboração criativa</li>
-            <li>Uso comercial disponível</li>
-          </ul>
-          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
-        </article>
-
-        <article class="servico__card" tabindex="0" aria-label="Fotografia para Marcas">
-          <div class="servico__icon" aria-hidden="true"><i class="ri-building-2-line"></i></div>
-          <h3 class="servico__title">Fotografia para Marcas</h3>
-          <p class="servico__desc">Conteúdo visual de alto padrão para empresas, e-commerce, redes sociais e materiais de marketing.</p>
-          <ul class="servico__features" role="list">
-            <li>Identidade visual respeitada</li>
-            <li>Licença comercial</li>
-            <li>Pacotes recorrentes</li>
-          </ul>
-          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
-        </article>
-
-        <article class="servico__card" tabindex="0" aria-label="Fotografia Noturna">
-          <div class="servico__icon" aria-hidden="true"><i class="ri-moon-line"></i></div>
-          <h3 class="servico__title">Fotografia Noturna</h3>
-          <p class="servico__desc">Explorando a luz artificial e a magia das cidades à noite — paisagens urbanas, festas e produções noturnas.</p>
-          <ul class="servico__features" role="list">
-            <li>Equipamento especializado</li>
-            <li>Atmosfera única</li>
-            <li>Pós-produção cinematográfica</li>
-          </ul>
-          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════ DEPOIMENTOS ══════════════════════════════════ -->
-  <section class="depoimentos section" aria-label="Depoimentos de clientes">
-    <div class="container">
-      <div class="section__header" data-scroll-reveal>
-        <span class="section__eyebrow">O que dizem</span>
-        <h2 class="section__title">Depoimentos</h2>
-      </div>
-      <div class="depoimentos__track" data-scroll-reveal>
-
-        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
-          <blockquote>
-            <p>"O Lipe capturou exatamente o que eu sentia. As fotos ficaram incríveis, com uma qualidade que eu não esperava. Recomendo demais!"</p>
-          </blockquote>
-          <figcaption>
-            <div class="depoimento__avatar" aria-hidden="true">M</div>
-            <div>
-              <strong>Marina S.</strong>
-              <span>Ensaio individual</span>
-            </div>
-          </figcaption>
-        </figure>
-
-        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
-          <blockquote>
-            <p>"Contratamos para nosso evento corporativo e superou todas as expectativas. Muito profissional e as fotos entregues foram simplesmente perfeitas."</p>
-          </blockquote>
-          <figcaption>
-            <div class="depoimento__avatar" aria-hidden="true">R</div>
-            <div>
-              <strong>Rafael T.</strong>
-              <span>Evento corporativo</span>
-            </div>
-          </figcaption>
-        </figure>
-
-        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
-          <blockquote>
-            <p>"Fizemos nosso ensaio de casal com o Lipe e foi uma das melhores experiências que já tivemos. Fotos lindíssimas e um profissional incrível."</p>
-          </blockquote>
-          <figcaption>
-            <div class="depoimento__avatar" aria-hidden="true">A</div>
-            <div>
-              <strong>Ana & Carlos</strong>
-              <span>Ensaio de casal</span>
-            </div>
-          </figcaption>
-        </figure>
-
-        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
-          <blockquote>
-            <p>"Precisava de fotos para meu LinkedIn e marca pessoal. O resultado foi além do que imaginei — fotos que transmitem exatamente quem sou."</p>
-          </blockquote>
-          <figcaption>
-            <div class="depoimento__avatar" aria-hidden="true">J</div>
-            <div>
-              <strong>Juliana M.</strong>
-              <span>Retratos profissionais</span>
-            </div>
-          </figcaption>
-        </figure>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════════════════ CONTATO ══════════════════════════════════════ -->
   <section id="contato" class="contato section" aria-label="Contato e orçamento">
     <div class="container">
@@ -592,7 +439,6 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#sobre">Sobre mim</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
-            <li><a href="#servicos">Serviços</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>

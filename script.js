@@ -1031,7 +1031,7 @@ function initCursor() {
   animateFollower();
 
   // Efeito em elementos interativos
-  const hoverTargets = 'a, button, .portfolio__item, .ensaio__card, .servico__card, .depoimento__card';
+  const hoverTargets = 'a, button, .portfolio__item, .portfolio__card-rosa, .ensaio__card';
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest(hoverTargets)) {
       cursor.classList.add('hovered');
@@ -1172,46 +1172,113 @@ function initCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
-/* ─── PORTFÓLIO — RENDER & FILTROS ──────────────────────────────────────── */
+/* ─── PORTFÓLIO — MURAL MASONRY & FILTROS ───────────────────────────────── */
+
+/**
+ * Mapeamento de categorias:
+ *   'eventos'   → data-filter="eventos"   (eventos corporativos, paradas, festas juninas)
+ *   'festas'    → data-filter="festas"    (baladas, festas noturnas, aniversários)
+ *   'casamentos'→ data-filter="casamentos"
+ *   'ensaios'   → data-filter="ensaios"
+ *   'editorial' → data-filter="editorial"
+ *   'cultural'  → data-filter="cultural"
+ *
+ * IDs 11–57 e 58–104 eram todos 'eventos'. Os que são festas/baladas
+ * migram para 'festas'. Os IDs 29–34 (Parada) e 35–36 (Festa Junina)
+ * permanecem em 'eventos'.
+ */
+
+// IDs que são baladas/festas noturnas → categoria "festas"
+const FESTAS_IDS = new Set([
+  11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,
+  37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,
+  58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,
+  80,81,82,83,84,85,86,87,88,89,90,91,92,93,95,96,98,99,101,102,103,
+]);
+
+// Posição (índice 0-based) após a qual o cartão rosa é inserido
+const CARD_ROSA_AFTER = 11;
+
+function resolveCategory(item) {
+  if (FESTAS_IDS.has(item.id)) return 'festas';
+  return item.category;
+}
+
+function resolveCategoryLabel(cat) {
+  const map = {
+    festas:     'Festas',
+    eventos:    'Eventos',
+    casamentos: 'Casamentos',
+    ensaios:    'Ensaios',
+    editorial:  'Editorial',
+    cultural:   'Cultura',
+  };
+  return map[cat] || cat;
+}
+
+function buildCardRosa() {
+  const a = document.createElement('a');
+  a.className = 'portfolio__card-rosa';
+  a.href = 'https://www.instagram.com/lipe.vision/';
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.setAttribute('aria-label', 'Seguir @lipe.vision no Instagram');
+  a.innerHTML = `
+    <span class="portfolio__card-rosa__tag">Siga nosso trabalho</span>
+    <p class="portfolio__card-rosa__titulo">MARQUE<br>A GENTE</p>
+    <span class="portfolio__card-rosa__handle">@lipe.vision</span>
+    <i class="ri-instagram-line portfolio__card-rosa__icon" aria-hidden="true"></i>
+  `;
+  return a;
+}
+
 function initPortfolio() {
   const grid = $('#portfolioGrid');
   if (!grid) return;
 
-  // Renderiza items
+  let cardRosaInserted = false;
+
+  // Renderiza itens
   portfolioItems.forEach((item, index) => {
+    // Inserir cartão rosa após o item na posição CARD_ROSA_AFTER
+    if (index === CARD_ROSA_AFTER && !cardRosaInserted) {
+      grid.appendChild(buildCardRosa());
+      cardRosaInserted = true;
+    }
+
+    const category = resolveCategory(item);
+    const catLabel = resolveCategoryLabel(category);
+
     const el = document.createElement('article');
     el.className = 'portfolio__item';
     el.setAttribute('role', 'listitem');
-    el.setAttribute('data-category', item.category);
+    el.setAttribute('data-category', category);
     el.setAttribute('data-index', index);
     el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', `${item.label}: ${item.title}`);
+    el.setAttribute('aria-label', `${catLabel}: ${item.title}`);
 
-    if (item.span === 'large') el.classList.add('portfolio__item--large');
-    if (item.span === 'wide')  el.classList.add('portfolio__item--wide');
-
-    // Monta a imagem com fallback para gradiente caso falhe ou src não exista
+    // Na galeria masonry não usamos span — cada imagem define sua altura
     const imgHTML = item.src
       ? `<img
            class="portfolio__thumb"
            src="${item.src}"
-           alt="${item.label}: ${item.title}"
+           alt="${catLabel}: ${item.title}"
            loading="lazy"
            decoding="async"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
          />
          <div class="portfolio__placeholder portfolio__placeholder--fallback"
               style="--pc1:${item.fallback.c1};--pc2:${item.fallback.c2};display:none"
               aria-hidden="true"></div>`
       : `<div class="portfolio__placeholder"
-              style="--pc1:${item.fallback.c1};--pc2:${item.fallback.c2}"
+              style="--pc1:${item.fallback.c1};--pc2:${item.fallback.c2};aspect-ratio:4/5"
               aria-hidden="true"></div>`;
 
     el.innerHTML = `
       ${imgHTML}
       <div class="portfolio__overlay" aria-hidden="true">
         <div class="portfolio__info">
-          <span class="portfolio__cat">${item.label}</span>
+          <span class="portfolio__cat">${catLabel}</span>
           <p class="portfolio__name">${item.title}</p>
         </div>
       </div>
@@ -1220,7 +1287,6 @@ function initPortfolio() {
       </div>
     `;
 
-    // Abrir lightbox
     el.addEventListener('click', () => openLightbox(index));
     el.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(index); }
@@ -1242,11 +1308,19 @@ function initPortfolio() {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
 
+      // Fotos
       $$('.portfolio__item').forEach(item => {
         const cat = item.dataset.category;
         const show = filter === 'all' || cat === filter;
         item.classList.toggle('hidden', !show);
       });
+
+      // Cartão rosa: só aparece em "Todas" e em "Festas"
+      const cardRosa = $('.portfolio__card-rosa', grid);
+      if (cardRosa) {
+        const showCard = filter === 'all' || filter === 'festas';
+        cardRosa.style.display = showCard ? '' : 'none';
+      }
     });
   });
 }
