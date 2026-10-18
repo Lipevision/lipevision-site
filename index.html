@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LIPE.VISION — Fotografia profissional em Salvador, Bahia. Transformando instantes em histórias." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>LIPE.VISION — Fotografia Profissional</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ PRELOADER ═══════════════════════════════════════ -->
+  <div id="preloader" role="status" aria-label="Carregando">
+    <div class="preloader__inner">
+      <span class="preloader__logo">LIPE<span>.VISION</span></span>
+      <div class="preloader__bar"><div class="preloader__fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ CURSOR ════════════════════════════════════════ -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════ HEADER / NAV ═════════════════════════════════ -->
+  <header class="header" id="header" role="banner">
+    <nav class="nav container" role="navigation" aria-label="Navegação principal">
+      <a href="#inicio" class="nav__logo" aria-label="LIPE.VISION — Início">
+        LIPE<span>.VISION</span>
+      </a>
+
+      <ul class="nav__list" id="navList" role="list">
+        <li><a href="#inicio" class="nav__link" aria-current="page">Início</a></li>
+        <li><a href="#sobre" class="nav__link">Sobre mim</a></li>
+        <li><a href="#portfolio" class="nav__link">Portfólio</a></li>
+        <li><a href="#ensaios" class="nav__link">Ensaios</a></li>
+        <li><a href="#eventos" class="nav__link">Eventos</a></li>
+        <li><a href="#servicos" class="nav__link">Serviços</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navList">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
+  <section id="inicio" class="hero" aria-label="Seção inicial">
+    <div class="hero__bg" aria-hidden="true">
+      <!-- Imagem de fundo via CSS – substituível em style.css -->
+      <div class="hero__overlay"></div>
+      <!-- Grade de partículas decorativas -->
+      <div class="hero__particles" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content container">
+      <p class="hero__eyebrow reveal-text">Salvador, Bahia</p>
+      <h1 class="hero__title reveal-text">
+        <span class="hero__title-line">Transformando</span>
+        <span class="hero__title-line hero__title-line--gold">instantes</span>
+        <span class="hero__title-line">em histórias.</span>
+      </h1>
+      <p class="hero__subtitle reveal-text">Fotografia profissional com olhar cinematográfico.</p>
+      <div class="hero__actions reveal-text">
+        <a href="#portfolio" class="btn btn--primary">
+          <span>Explorar portfólio</span>
+          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+        </a>
+        <a href="#contato" class="btn btn--outline">
+          <span>Solicitar orçamento</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-label="Role para baixo">
+      <div class="hero__scroll-line"></div>
+      <span>Rolar</span>
+    </div>
+
+    <!-- Indicador de frame / câmera decorativo -->
+    <div class="hero__frame" aria-hidden="true">
+      <div class="hero__frame-corner hero__frame-corner--tl"></div>
+      <div class="hero__frame-corner hero__frame-corner--tr"></div>
+      <div class="hero__frame-corner hero__frame-corner--bl"></div>
+      <div class="hero__frame-corner hero__frame-corner--br"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ MARQUEE ════════════════════════════════════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Eventos</span><span class="marquee__dot">✦</span>
+      <span>Ensaios</span><span class="marquee__dot">✦</span>
+      <span>Retratos</span><span class="marquee__dot">✦</span>
+      <span>Editorial</span><span class="marquee__dot">✦</span>
+      <span>Noturna</span><span class="marquee__dot">✦</span>
+      <span>Casamento</span><span class="marquee__dot">✦</span>
+      <span>Corporativo</span><span class="marquee__dot">✦</span>
+      <span>Moda</span><span class="marquee__dot">✦</span>
+      <!-- duplicado para loop infinito -->
+      <span>Eventos</span><span class="marquee__dot">✦</span>
+      <span>Ensaios</span><span class="marquee__dot">✦</span>
+      <span>Retratos</span><span class="marquee__dot">✦</span>
+      <span>Editorial</span><span class="marquee__dot">✦</span>
+      <span>Noturna</span><span class="marquee__dot">✦</span>
+      <span>Casamento</span><span class="marquee__dot">✦</span>
+      <span>Corporativo</span><span class="marquee__dot">✦</span>
+      <span>Moda</span><span class="marquee__dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ SOBRE ═════════════════════════════════════════ -->
+  <section id="sobre" class="sobre section" aria-label="Sobre mim">
+    <div class="container">
+      <div class="sobre__grid">
+        <div class="sobre__visual" data-scroll-reveal>
+          <div class="sobre__img-wrapper">
+            <img
+              src="assets/images/lipe.jpg"
+              alt="Lipe — fotógrafo profissional LIPE.VISION, Salvador, Bahia"
+              class="sobre__img-real"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            />
+            <!-- Fallback com iniciais caso a imagem não carregue -->
+            <div class="sobre__img-placeholder" role="img" aria-label="Foto do fotógrafo LIPE.VISION" style="display:none">
+              <div class="sobre__img-initials">LV</div>
+            </div>
+            <div class="sobre__img-frame" aria-hidden="true"></div>
+          </div>
+          <div class="sobre__stats" aria-label="Estatísticas">
+            <div class="sobre__stat">
+              <span class="sobre__stat-num" data-target="200">0</span><span>+</span>
+              <p>Sessões realizadas</p>
+            </div>
+            <div class="sobre__stat">
+              <span class="sobre__stat-num" data-target="3">0</span><span>+</span>
+              <p>Anos de experiência</p>
+            </div>
+            <div class="sobre__stat">
+              <span class="sobre__stat-num" data-target="100">0</span><span>%</span>
+              <p>Clientes satisfeitos</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sobre__content" data-scroll-reveal>
+          <span class="section__eyebrow">Sobre mim</span>
+          <h2 class="section__title">A visão por trás<br /><em>da câmera</em></h2>
+          <p class="sobre__text">
+            Olá! Sou Lipe, fotógrafo profissional baseado em Salvador, Bahia.
+          </p>
+          <p class="sobre__text">
+            Meu trabalho é transformar momentos em imagens marcantes, com sensibilidade, direção e identidade visual.
+          </p>
+          <p class="sobre__text">
+            Atuo com ensaios, eventos, retratos e fotografia criativa, sempre buscando registrar cada detalhe com qualidade e emoção.
+          </p>
+          <p class="sobre__text">
+            Meu objetivo é criar fotografias que contem histórias reais e valorizem cada pessoa, marca ou momento.
+          </p>
+          <div class="sobre__assinatura" aria-hidden="true">Lipe</div>
+          <a href="#contato" class="btn btn--primary">
+            <span>Vamos conversar</span>
+            <i class="ri-arrow-right-line" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PORTFÓLIO ═════════════════════════════════════ -->
+  <section id="portfolio" class="portfolio section" aria-label="Portfólio">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">Trabalhos selecionados</span>
+        <h2 class="section__title">Portfólio</h2>
+      </div>
+
+      <!-- Filtros de categoria -->
+      <div class="portfolio__filters" role="tablist" aria-label="Filtrar por categoria" data-scroll-reveal>
+        <button class="portfolio__filter active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+        <button class="portfolio__filter" data-filter="eventos" role="tab" aria-selected="false">Festas &amp; Eventos</button>
+        <button class="portfolio__filter" data-filter="casamentos" role="tab" aria-selected="false">Casamentos</button>
+        <button class="portfolio__filter" data-filter="ensaios" role="tab" aria-selected="false">Ensaios</button>
+        <button class="portfolio__filter" data-filter="editorial" role="tab" aria-selected="false">Editorial</button>
+        <button class="portfolio__filter" data-filter="cultural" role="tab" aria-selected="false">Cultura</button>
+      </div>
+
+      <!-- Grade de portfólio -->
+      <div class="portfolio__grid" id="portfolioGrid" role="list">
+        <!-- Os itens são gerados pelo script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ENSAIOS ══════════════════════════════════════ -->
+  <section id="ensaios" class="ensaios section" aria-label="Ensaios fotográficos">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">Experiências únicas</span>
+        <h2 class="section__title">Ensaios<br /><em>Fotográficos</em></h2>
+        <p class="section__desc">Do ensaio individual mais íntimo à sessão editorial mais elaborada, cada momento é tratado com cuidado e sensibilidade.</p>
+      </div>
+
+      <div class="ensaios__grid" data-scroll-reveal>
+
+        <article class="ensaio__card ensaio__card--large" aria-label="Ensaios Individuais">
+          <div class="ensaio__img-wrap">
+            <img
+              src="assets/images/5ADD3D2C-826E-46D8-9E29-09C5898F5162.PNG"
+              alt="Ensaios Individuais — LIPE.VISION"
+              class="ensaio__img"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#100c08,#201810)'"
+            />
+          </div>
+          <div class="ensaio__info">
+            <h3>Ensaios Individuais</h3>
+            <p>Sessões íntimas que revelam personalidade e autenticidade em cada quadro.</p>
+            <a href="#contato" class="ensaio__link">Agendar <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+          </div>
+        </article>
+
+        <article class="ensaio__card" aria-label="Ensaios de Casais">
+          <div class="ensaio__img-wrap">
+            <img
+              src="assets/images/CA236AE6-F0B0-49BF-ABD4-C45D2CC7318B.PNG"
+              alt="Ensaios de Casais — LIPE.VISION"
+              class="ensaio__img"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1a1410,#2e2018)'"
+            />
+          </div>
+          <div class="ensaio__info">
+            <h3>Ensaios de Casais</h3>
+            <p>Eternizando o amor com delicadeza e estética cinematográfica.</p>
+            <a href="#contato" class="ensaio__link">Agendar <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+          </div>
+        </article>
+
+        <article class="ensaio__card" aria-label="Retratos Profissionais">
+          <div class="ensaio__img-wrap">
+            <img
+              src="assets/images/4F8176DC-F722-4377-A991-54584EB5B21C.PNG"
+              alt="Retratos Profissionais — LIPE.VISION"
+              class="ensaio__img"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0a0a0a,#181818)'"
+            />
+          </div>
+          <div class="ensaio__info">
+            <h3>Retratos Profissionais</h3>
+            <p>Fotos de perfil e headshots com presença e sofisticação para LinkedIn, portfólios e mais.</p>
+            <a href="#contato" class="ensaio__link">Agendar <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+          </div>
+        </article>
+
+        <article class="ensaio__card ensaio__card--wide" aria-label="Fotografia Editorial">
+          <div class="ensaio__img-wrap">
+            <img
+              src="assets/images/95C90D58-00F0-4D42-BBB3-CEAE2C2ABB82.PNG"
+              alt="Editorial — LIPE.VISION"
+              class="ensaio__img"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#0a0514,#1a0a28)'"
+            />
+          </div>
+          <div class="ensaio__info">
+            <h3>Editorial de Moda</h3>
+            <p>Produções editoriais de alto impacto, com direção de arte e luz trabalhada.</p>
+            <a href="#contato" class="ensaio__link">Agendar <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ EVENTOS ══════════════════════════════════════ -->
+  <section id="eventos" class="eventos section" aria-label="Cobertura de eventos">
+    <div class="eventos__bg" aria-hidden="true">
+      <div class="eventos__overlay"></div>
+    </div>
+    <div class="container">
+      <div class="eventos__content" data-scroll-reveal>
+        <span class="section__eyebrow section__eyebrow--light">Cobertura completa</span>
+        <h2 class="section__title section__title--light">Fotografia de<br /><em>Eventos</em></h2>
+        <p class="eventos__text">
+          De festas corporativas a celebrações pessoais — sua memória merece ser registrada com qualidade e cuidado. Trabalho com discernimento e leveza, capturando a essência de cada evento sem interferir no seu fluxo natural.
+        </p>
+        <ul class="eventos__list" role="list">
+          <li><i class="ri-check-line" aria-hidden="true"></i> Formaturas e festividades</li>
+          <li><i class="ri-check-line" aria-hidden="true"></i> Festas corporativas</li>
+          <li><i class="ri-check-line" aria-hidden="true"></i> Eventos sociais e particulares</li>
+          <li><i class="ri-check-line" aria-hidden="true"></i> Shows e produções ao vivo</li>
+          <li><i class="ri-check-line" aria-hidden="true"></i> Aniversários e comemorações</li>
+        </ul>
+        <a href="#contato" class="btn btn--gold">
+          <span>Solicitar cobertura</span>
+          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SERVIÇOS ════════════════════════════════════ -->
+  <section id="servicos" class="servicos section" aria-label="Serviços">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">O que ofereço</span>
+        <h2 class="section__title">Serviços</h2>
+        <p class="section__desc">Cada projeto é único. Converse comigo para criar um pacote personalizado.</p>
+      </div>
+
+      <div class="servicos__grid" data-scroll-reveal>
+
+        <article class="servico__card" tabindex="0" aria-label="Cobertura de Eventos">
+          <div class="servico__icon" aria-hidden="true"><i class="ri-camera-lens-line"></i></div>
+          <h3 class="servico__title">Cobertura de Eventos</h3>
+          <p class="servico__desc">Documentação completa de eventos com fotógrafo dedicado, edição profissional e entrega digital organizada.</p>
+          <ul class="servico__features" role="list">
+            <li>Edição profissional inclusa</li>
+            <li>Entrega em galeria online</li>
+            <li>Arquivo em alta resolução</li>
+          </ul>
+          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
+        </article>
+
+        <article class="servico__card servico__card--featured" tabindex="0" aria-label="Ensaios Fotográficos">
+          <div class="servico__badge" aria-label="Mais popular">Popular</div>
+          <div class="servico__icon" aria-hidden="true"><i class="ri-user-3-line"></i></div>
+          <h3 class="servico__title">Ensaios Fotográficos</h3>
+          <p class="servico__desc">Sessões individuais, de casal ou família, em locação ou estúdio, com direção de pose e luz personalizada.</p>
+          <ul class="servico__features" role="list">
+            <li>Direção fotográfica inclusa</li>
+            <li>Múltiplos cenários</li>
+            <li>Seleção colaborativa</li>
+          </ul>
+          <a href="#contato" class="btn btn--primary servico__btn">Solicitar orçamento</a>
+        </article>
+
+        <article class="servico__card" tabindex="0" aria-label="Retratos Profissionais">
+          <div class="servico__icon" aria-hidden="true"><i class="ri-id-card-line"></i></div>
+          <h3 class="servico__title">Retratos Profissionais</h3>
+          <p class="servico__desc">Headshots e fotos de perfil para executivos, criadores de conteúdo e profissionais liberais.</p>
+          <ul class="servico__features" role="list">
+            <li>Múltiplas variações</li>
+            <li>Fundo removível</li>
+            <li>Entrega rápida</li>
+          </ul>
+          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
+        </article>
+
+        <article class="servico__card" tabindex="0" aria-label="Produções Editoriais">
+          <div class="servico__icon" aria-hidden="true"><i class="ri-scissors-cut-line"></i></div>
+          <h3 class="servico__title">Produções Editoriais</h3>
+          <p class="servico__desc">Editoriais de moda, beleza e arte com planejamento de produção completo — direção, styling e pós-produção.</p>
+          <ul class="servico__features" role="list">
+            <li>Direção de arte</li>
+            <li>Colaboração criativa</li>
+            <li>Uso comercial disponível</li>
+          </ul>
+          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
+        </article>
+
+        <article class="servico__card" tabindex="0" aria-label="Fotografia para Marcas">
+          <div class="servico__icon" aria-hidden="true"><i class="ri-building-2-line"></i></div>
+          <h3 class="servico__title">Fotografia para Marcas</h3>
+          <p class="servico__desc">Conteúdo visual de alto padrão para empresas, e-commerce, redes sociais e materiais de marketing.</p>
+          <ul class="servico__features" role="list">
+            <li>Identidade visual respeitada</li>
+            <li>Licença comercial</li>
+            <li>Pacotes recorrentes</li>
+          </ul>
+          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
+        </article>
+
+        <article class="servico__card" tabindex="0" aria-label="Fotografia Noturna">
+          <div class="servico__icon" aria-hidden="true"><i class="ri-moon-line"></i></div>
+          <h3 class="servico__title">Fotografia Noturna</h3>
+          <p class="servico__desc">Explorando a luz artificial e a magia das cidades à noite — paisagens urbanas, festas e produções noturnas.</p>
+          <ul class="servico__features" role="list">
+            <li>Equipamento especializado</li>
+            <li>Atmosfera única</li>
+            <li>Pós-produção cinematográfica</li>
+          </ul>
+          <a href="#contato" class="btn btn--outline servico__btn">Solicitar orçamento</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ DEPOIMENTOS ══════════════════════════════════ -->
+  <section class="depoimentos section" aria-label="Depoimentos de clientes">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">O que dizem</span>
+        <h2 class="section__title">Depoimentos</h2>
+      </div>
+      <div class="depoimentos__track" data-scroll-reveal>
+
+        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
+          <blockquote>
+            <p>"O Lipe capturou exatamente o que eu sentia. As fotos ficaram incríveis, com uma qualidade que eu não esperava. Recomendo demais!"</p>
+          </blockquote>
+          <figcaption>
+            <div class="depoimento__avatar" aria-hidden="true">M</div>
+            <div>
+              <strong>Marina S.</strong>
+              <span>Ensaio individual</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
+          <blockquote>
+            <p>"Contratamos para nosso evento corporativo e superou todas as expectativas. Muito profissional e as fotos entregues foram simplesmente perfeitas."</p>
+          </blockquote>
+          <figcaption>
+            <div class="depoimento__avatar" aria-hidden="true">R</div>
+            <div>
+              <strong>Rafael T.</strong>
+              <span>Evento corporativo</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
+          <blockquote>
+            <p>"Fizemos nosso ensaio de casal com o Lipe e foi uma das melhores experiências que já tivemos. Fotos lindíssimas e um profissional incrível."</p>
+          </blockquote>
+          <figcaption>
+            <div class="depoimento__avatar" aria-hidden="true">A</div>
+            <div>
+              <strong>Ana & Carlos</strong>
+              <span>Ensaio de casal</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="depoimento__card" role="figure" aria-label="Depoimento de cliente">
+          <blockquote>
+            <p>"Precisava de fotos para meu LinkedIn e marca pessoal. O resultado foi além do que imaginei — fotos que transmitem exatamente quem sou."</p>
+          </blockquote>
+          <figcaption>
+            <div class="depoimento__avatar" aria-hidden="true">J</div>
+            <div>
+              <strong>Juliana M.</strong>
+              <span>Retratos profissionais</span>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ CONTATO ══════════════════════════════════════ -->
+  <section id="contato" class="contato section" aria-label="Contato e orçamento">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">Vamos conversar</span>
+        <h2 class="section__title">Entre em<br /><em>Contato</em></h2>
+        <p class="section__desc">Pronto para criar algo incrível juntos? Me conte sobre o seu projeto.</p>
+      </div>
+
+      <div class="contato__grid" data-scroll-reveal>
+
+        <!-- Informações de contato -->
+        <aside class="contato__info" aria-label="Informações de contato">
+          <div class="contato__item">
+            <div class="contato__item-icon" aria-hidden="true"><i class="ri-map-pin-2-line"></i></div>
+            <div>
+              <strong>Localização</strong>
+              <p>Salvador, Bahia — Brasil</p>
+            </div>
+          </div>
+          <div class="contato__item">
+            <div class="contato__item-icon" aria-hidden="true"><i class="ri-instagram-line"></i></div>
+            <div>
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/lipe.vision?cplk=ZjA0YWV5cmw4cnVi&utm_source=qr" target="_blank" rel="noopener noreferrer" class="contato__link">@lipe.vision</a>
+            </div>
+          </div>
+          <div class="contato__item">
+            <div class="contato__item-icon" aria-hidden="true"><i class="ri-whatsapp-line"></i></div>
+            <div>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/5571920029709?text=%C3%93la%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" id="whatsappLink" class="contato__link" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
+            </div>
+          </div>
+
+          <!-- Redes sociais -->
+          <div class="contato__social" aria-label="Redes sociais">
+            <a href="https://www.instagram.com/lipe.vision?cplk=ZjA0YWV5cmw4cnVi&utm_source=qr" class="social__btn social__btn--ig" target="_blank" rel="noopener noreferrer" aria-label="Seguir no Instagram">
+              <i class="ri-instagram-line" aria-hidden="true"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/5571920029709?text=%C3%93la%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" id="whatsappBtn" class="social__btn social__btn--wa" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp">
+              <i class="ri-whatsapp-line" aria-hidden="true"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </aside>
+
+        <!-- Formulário -->
+        <div class="contato__form-wrapper">
+          <form class="contato__form" id="contatoForm" novalidate aria-label="Formulário de orçamento">
+            <!-- Aviso de demonstração -->
+            <div class="form__demo-notice" role="note">
+              <i class="ri-information-line" aria-hidden="true"></i>
+              <span>Formulário de demonstração. Para ativá-lo com envio real, configure um serviço como <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a> ou <a href="https://web3forms.com" target="_blank" rel="noopener noreferrer">Web3Forms</a>.</span>
+            </div>
+
+            <div class="form__group">
+              <label for="nome" class="form__label">Nome completo <span aria-hidden="true">*</span></label>
+              <input type="text" id="nome" name="nome" class="form__input" placeholder="Seu nome" required autocomplete="name" />
+              <span class="form__error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form__group">
+              <label for="email" class="form__label">E-mail <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" class="form__input" placeholder="seu@email.com" required autocomplete="email" />
+              <span class="form__error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form__group">
+              <label for="servico" class="form__label">Tipo de serviço <span aria-hidden="true">*</span></label>
+              <select id="servico" name="servico" class="form__select" required>
+                <option value="">Selecione um serviço</option>
+                <option value="evento">Cobertura de evento</option>
+                <option value="ensaio-individual">Ensaio individual</option>
+                <option value="ensaio-casal">Ensaio de casal</option>
+                <option value="retrato">Retrato profissional</option>
+                <option value="editorial">Produção editorial</option>
+                <option value="marca">Fotografia para marca</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="form__error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form__group">
+              <label for="mensagem" class="form__label">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" class="form__textarea" rows="4" placeholder="Conte-me sobre o seu projeto, data desejada e qualquer detalhe relevante..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary form__submit" id="formSubmit">
+              <span>Enviar mensagem</span>
+              <i class="ri-send-plane-line" aria-hidden="true"></i>
+            </button>
+
+            <div class="form__success" id="formSuccess" role="status" aria-live="polite" hidden>
+              <i class="ri-checkbox-circle-line" aria-hidden="true"></i>
+              <p>Mensagem enviada com sucesso! Em breve entrarei em contato.</p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#inicio" class="footer__logo" aria-label="LIPE.VISION — Voltar ao início">LIPE<span>.VISION</span></a>
+          <p>Fotografia profissional em Salvador, Bahia.<br />Transformando instantes em histórias.</p>
+        </div>
+        <nav class="footer__nav" aria-label="Links do rodapé">
+          <ul role="list">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre mim</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="footer__social" aria-label="Redes sociais">
+          <a href="https://www.instagram.com/lipe.vision?cplk=ZjA0YWV5cmw4cnVi&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram LIPE.VISION"><i class="ri-instagram-line" aria-hidden="true"></i></a>
+          <a href="https://wa.me/5571920029709?text=%C3%93la%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" id="footerWhatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp LIPE.VISION"><i class="ri-whatsapp-line" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; <span id="anoAtual"></span> LIPE.VISION — Todos os direitos reservados.</p>
+        <p class="footer__credit">Salvador, Bahia, Brasil</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════ LIGHTBOX ═════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de foto" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Fechar visualização"><i class="ri-close-line" aria-hidden="true"></i></button>
+    <button class="lightbox__prev" id="lightboxPrev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line" aria-hidden="true"></i></button>
+    <button class="lightbox__next" id="lightboxNext" aria-label="Próxima foto"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></button>
+    <div class="lightbox__content">
+      <div class="lightbox__img-wrap" id="lightboxImgWrap">
+        <!-- Imagem injetada pelo JS -->
+      </div>
+      <p class="lightbox__caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ BOTÃO FLUTUANTE ══════════════════════════════ -->
+  <div class="fab-wrapper" aria-label="Contato rápido">
+    <button class="fab fab--main" id="fabMain" aria-label="Abrir opções de contato" aria-expanded="false">
+      <i class="ri-customer-service-2-line fab__icon fab__icon--default" aria-hidden="true"></i>
+      <i class="ri-close-line fab__icon fab__icon--close" aria-hidden="true"></i>
+    </button>
+    <div class="fab__options" id="fabOptions" role="list">
+      <a href="https://www.instagram.com/lipe.vision/" target="_blank" rel="noopener noreferrer" class="fab__option" role="listitem" aria-label="Instagram">
+        <span class="fab__label">Instagram</span>
+        <div class="fab__btn fab__btn--ig"><i class="ri-instagram-line" aria-hidden="true"></i></div>
+      </a>
+      <a href="https://wa.me/5571920029709?text=%C3%93la%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" id="fabWhatsapp" target="_blank" rel="noopener noreferrer" class="fab__option" role="listitem" aria-label="WhatsApp">
+        <span class="fab__label">WhatsApp</span>
+        <div class="fab__btn fab__btn--wa"><i class="ri-whatsapp-line" aria-hidden="true"></i></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ BACK TO TOP ══════════════════════════════════ -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" hidden>
+    <i class="ri-arrow-up-line" aria-hidden="true"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

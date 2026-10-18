@@ -1,0 +1,25 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários e de editor
+*.tmp
+*.log
+.vscode/
+.idea/
+
+# Arquivos HEIC (não suportados pelo navegador, não referenciados no código)
+assets/images/IMG_2929.HEIC
+assets/images/IMG_2947.HEIC
+assets/images/IMG_2976.HEIC
+assets/images/IMG_2980.HEIC
+assets/images/IMG_2982.HEIC
+assets/images/IMG_3063.HEIC
+assets/images/IMG_3976.HEIC
+assets/images/IMG_4008.HEIC
+assets/images/IMG_4020.HEIC
+
+# Variáveis de ambiente (nunca enviar)
+.env
+.env.local
