@@ -26,15 +26,6 @@ const portfolioItems = [
 
   // ── CASAMENTOS ────────────────────────────────────────────────────────
   {
-    id: 1,
-    category: 'casamentos',
-    label: 'Fotografia de Casamento',
-    title: 'Cerimônia ao Ar Livre',
-    span: 'large',
-    src: 'assets/images/10A0568F-756D-49DC-8403-D3224452921A.png',
-    fallback: { c1: '#0a1a08', c2: '#14280f' },
-  },
-  {
     id: 2,
     category: 'casamentos',
     label: 'Fotografia de Casamento',
