@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LIPE.VISION — Fotografia profissional em Salvador, Bahia. Transformando instantes em histórias." />
+  <meta name="description" content="LIPE.VISION — Fotografia profissional em Salvador, Bahia. Com olhar cinematográfico, registramos seus momentos mais importantes." />
   <meta name="theme-color" content="#0a0a0a" />
   <title>LIPE.VISION — Fotografia Profissional</title>
 
@@ -41,9 +41,11 @@
       <ul class="nav__list" id="navList" role="list">
         <li><a href="#inicio" class="nav__link" aria-current="page">Início</a></li>
         <li><a href="#sobre" class="nav__link">Sobre mim</a></li>
+        <li><a href="#suas-fotos" class="nav__link">Suas Fotos</a></li>
         <li><a href="#portfolio" class="nav__link">Portfólio</a></li>
         <li><a href="#ensaios" class="nav__link">Ensaios</a></li>
         <li><a href="#eventos" class="nav__link">Eventos</a></li>
+        <li><a href="contrato.html" class="nav__link">Contrato</a></li>
         <li><a href="#contato" class="nav__link">Contato</a></li>
       </ul>
 
@@ -64,15 +66,13 @@
       <div class="hero__particles" aria-hidden="true"></div>
     </div>
 
-    <div class="hero__content container">
-      <p class="hero__eyebrow reveal-text">Salvador, Bahia</p>
-      <h1 class="hero__title reveal-text">
-        <span class="hero__title-line">Transformando</span>
-        <span class="hero__title-line hero__title-line--gold">instantes</span>
-        <span class="hero__title-line">em histórias.</span>
-      </h1>
-      <p class="hero__subtitle reveal-text">Fotografia profissional com olhar cinematográfico.</p>
-      <div class="hero__actions reveal-text">
+    <div class="hero__content hero__content--centered container">
+      <p class="hero__eyebrow hero__eyebrow--center reveal-text">Salvador, Bahia</p>
+      <div class="hero__brand reveal-text" aria-label="LIPE.VISION">
+        <span class="hero__brand-lipe">LIPE</span><span class="hero__brand-dot">.VISION</span>
+      </div>
+      <p class="hero__subtitle hero__subtitle--center reveal-text">Fotografia profissional com olhar cinematográfico.</p>
+      <div class="hero__actions hero__actions--center reveal-text">
         <a href="#portfolio" class="btn btn--primary">
           <span>Explorar portfólio</span>
           <i class="ri-arrow-right-line" aria-hidden="true"></i>
@@ -138,7 +138,6 @@
             <div class="sobre__img-placeholder" role="img" aria-label="Foto do fotógrafo LIPE.VISION" style="display:none">
               <div class="sobre__img-initials">LV</div>
             </div>
-            <div class="sobre__img-frame" aria-hidden="true"></div>
           </div>
           <div class="sobre__stats" aria-label="Estatísticas" style="display:none">
             <div class="sobre__stat">
@@ -176,6 +175,33 @@
             <span>Vamos conversar</span>
             <i class="ri-arrow-right-line" aria-hidden="true"></i>
           </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SUAS FOTOS ══════════════════════════════════ -->
+  <section id="suas-fotos" class="suas-fotos section" aria-label="Suas fotos">
+    <div class="container">
+      <div class="section__header" data-scroll-reveal>
+        <span class="section__eyebrow">Galerias exclusivas</span>
+        <h2 class="section__title">Suas memórias,<br /><em>prontas para você.</em></h2>
+        <p class="section__desc">Cada fotografia guarda uma história, uma emoção e um momento especial. Aqui você encontra os registros dos eventos fotografados pela LIPE.VISION, para reviver cada instante e guardar suas melhores lembranças.</p>
+      </div>
+
+      <!-- Galerias — adicione ou edite os dados no arquivo galerias.js -->
+      <div class="galerias__grid" id="galeriasGrid" data-scroll-reveal>
+        <!-- Os cards são gerados pelo script.js a partir do array GALERIAS -->
+      </div>
+
+      <!-- Aviso de prazo -->
+      <div class="suas-fotos__aviso" data-scroll-reveal>
+        <div class="suas-fotos__aviso-inner">
+          <i class="ri-time-line" aria-hidden="true"></i>
+          <div>
+            <strong>Atenção ao prazo de download</strong>
+            <p>As fotografias disponibilizadas pela LIPE.VISION permanecerão acessíveis por até <strong>72 horas</strong> após a comunicação oficial de entrega. Recomendamos que todos os arquivos sejam baixados e armazenados em local seguro dentro desse período. Após o encerramento do prazo, o acesso à galeria poderá ser desativado, conforme as condições contratuais aplicáveis.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -317,6 +343,10 @@
           <span>Solicitar cobertura</span>
           <i class="ri-arrow-right-line" aria-hidden="true"></i>
         </a>
+        <a href="contrato.html" class="btn btn--outline" style="margin-top:0.75rem">
+          <span>Conheça nosso contrato</span>
+          <i class="ri-file-text-line" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -438,7 +468,9 @@
           <ul role="list">
             <li><a href="#inicio">Início</a></li>
             <li><a href="#sobre">Sobre mim</a></li>
+            <li><a href="#suas-fotos">Suas Fotos</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="contrato.html">Contrato</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>

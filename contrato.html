@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LIPE.VISION — Contrato de Prestação de Serviços Fotográficos e Audiovisuais." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>Contrato — LIPE.VISION</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-black:      #0a0a0a;
+      --color-dark:       #111111;
+      --color-dark-2:     #1a1a1a;
+      --color-graphite:   #2a2a2a;
+      --color-light:      #aaaaaa;
+      --color-white:      #f5f5f5;
+      --color-pure-white: #ffffff;
+      --color-gold:       #c9a55a;
+      --color-gold-light: #e8c87a;
+      --color-gold-dark:  #9a7a3a;
+      --font-display:     'Cormorant Garamond', Georgia, serif;
+      --font-sans:        'Montserrat', system-ui, sans-serif;
+      --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--color-black);
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--color-gold);
+      outline-offset: 3px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-inline: clamp(1rem, 5vw, 3rem);
+    }
+
+    /* ── Header ── */
+    .contrato-header {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .contrato-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .contrato-header__logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--color-pure-white);
+    }
+
+    .contrato-header__logo span { color: var(--color-gold); }
+
+    .contrato-header__actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Botões ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s var(--ease-out);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--color-white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .btn--outline:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .btn--gold {
+      background: transparent;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold);
+    }
+
+    .btn--gold:hover {
+      background: var(--color-gold);
+      color: var(--color-black);
+    }
+
+    .btn--primary {
+      background: var(--color-gold);
+      color: var(--color-black);
+      border: 1px solid var(--color-gold);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-gold-light);
+      border-color: var(--color-gold-light);
+    }
+
+    /* ── Hero do contrato ── */
+    .contrato-hero {
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contrato-hero__eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .contrato-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--color-pure-white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .contrato-hero__sub {
+      font-size: 0.85rem;
+      color: rgba(245,245,245,0.45);
+      max-width: 60ch;
+      line-height: 1.7;
+    }
+
+    /* ── Aviso legal ── */
+    .contrato-aviso {
+      background: rgba(201,165,90,0.06);
+      border: 1px solid rgba(201,165,90,0.2);
+      border-left: 3px solid var(--color-gold);
+      padding: 1rem 1.25rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: rgba(245,245,245,0.55);
+      line-height: 1.6;
+    }
+
+    .contrato-aviso strong {
+      color: var(--color-gold-light);
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Cláusulas ── */
+    .clausulas {
+      padding: 2.5rem 0;
+    }
+
+    .clausula {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .clausula:last-of-type { border-bottom: none; }
+
+    .clausula__numero {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .clausula__titulo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-pure-white);
+      margin-bottom: 1.25rem;
+    }
+
+    .clausula__texto {
+      color: rgba(245,245,245,0.7);
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .clausula__sub {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(245,245,245,0.5);
+      text-transform: uppercase;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .clausula__lista {
+      list-style: none;
+      margin: 0 0 1rem;
+    }
+
+    .clausula__lista li {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.9rem;
+      color: rgba(245,245,245,0.65);
+      line-height: 1.6;
+    }
+
+    .clausula__lista li::before {
+      content: '—';
+      color: var(--color-gold-dark);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .clausula__destaque {
+      background: rgba(201,165,90,0.05);
+      border-left: 2px solid var(--color-gold);
+      padding: 0.85rem 1.1rem;
+      border-radius: 0 4px 4px 0;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+      color: rgba(245,245,245,0.72);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Campos configuráveis */
+    .campo-config {
+      display: inline-block;
+      background: rgba(201,165,90,0.08);
+      border: 1px dashed rgba(201,165,90,0.4);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      color: var(--color-gold);
+      font-style: normal;
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    /* ── Aceite ── */
+    .aceite {
+      background: var(--color-dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .aceite__titulo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--color-pure-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .aceite__aviso {
+      font-size: 0.78rem;
+      color: rgba(245,245,245,0.4);
+      margin-bottom: 1.5rem;
+    }
+
+    .aceite__item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .aceite__item:last-child { border-bottom: none; }
+
+    .aceite__item input[type="checkbox"],
+    .aceite__item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--color-gold);
+      cursor: pointer;
+    }
+
+    .aceite__item label {
+      font-size: 0.88rem;
+      color: rgba(245,245,245,0.7);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .aceite__radio-group {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .aceite__radio-group label {
+      font-size: 0.85rem;
+    }
+
+    /* ── Ações finais ── */
+    .contrato-acoes {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 2rem 0 4rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Impressão ── */
+    @media print {
+      .contrato-header__actions,
+      .contrato-acoes,
+      .aceite { display: none; }
+
+      body { background: white; color: black; }
+      .clausula__texto, .clausula__lista li { color: #333; }
+      .clausula__titulo { color: black; }
+      .clausula__numero { color: #8a6a2a; }
+      .contrato-hero__title { color: black; }
+      .contrato-aviso { border-left-color: #8a6a2a; background: #fffdf5; }
+    }
+
+    /* ── Responsivo ── */
+    @media (max-width: 600px) {
+      .contrato-header__actions { gap: 0.5rem; }
+      .btn { padding: 0.6rem 1rem; font-size: 0.6rem; }
+      .aceite { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header class="contrato-header">
+    <div class="container contrato-header__inner">
+      <a href="index.html" class="contrato-header__logo" aria-label="Voltar ao site LIPE.VISION">
+        LIPE<span>.VISION</span>
+      </a>
+      <div class="contrato-header__actions">
+        <button class="btn btn--outline" onclick="window.print()" aria-label="Imprimir contrato ou salvar como PDF">
+          <i class="ri-printer-line" aria-hidden="true"></i>
+          <span>Imprimir / PDF</span>
+        </button>
+        <a href="index.html" class="btn btn--gold">
+          <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          <span>Voltar ao site</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="contrato-hero">
+    <div class="container">
+      <span class="contrato-hero__eyebrow">LIPE.VISION — Fotografia Profissional</span>
+      <h1 class="contrato-hero__title">Contrato de Prestação<br />de Serviços Fotográficos<br />&amp; Audiovisuais</h1>
+      <p class="contrato-hero__sub">Minuta inicial de condições gerais. Este documento deverá ser revisado juridicamente antes de uso definitivo para formalização de contratações.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ AVISO ══════════ -->
+  <div class="container">
+    <div class="contrato-aviso" role="note">
+      <strong>Documento informativo — Minuta inicial</strong>
+      Este é um documento informativo que apresenta as condições gerais da LIPE.VISION. Para formalizar uma contratação, os dados das partes, o valor e as condições específicas do serviço deverão ser preenchidos e acordados. O texto deverá passar por revisão jurídica antes de uso definitivo.
+    </div>
+  </div>
+
+  <!-- ══════════ CLÁUSULAS ══════════ -->
+  <main class="clausulas">
+    <div class="container">
+
+      <!-- IDENTIFICAÇÃO DAS PARTES -->
+      <section class="clausula" id="partes">
+        <span class="clausula__numero">Identificação das Partes</span>
+        <h2 class="clausula__titulo">Prestadora de Serviços</h2>
+        <p class="clausula__texto"><strong>CONTRATADA:</strong> LIPE.VISION, representada pelo profissional responsável.</p>
+        <ul class="clausula__lista">
+          <li>Nome completo / Razão Social: <span class="campo-config">[ a preencher ]</span></li>
+          <li>CPF / CNPJ: <span class="campo-config">[ a preencher ]</span></li>
+          <li>E-mail profissional: <span class="campo-config">[ a preencher ]</span></li>
+          <li>Telefone / WhatsApp: <span class="campo-config">[ a preencher ]</span></li>
+        </ul>
+        <p class="clausula__texto"><strong>CONTRATANTE:</strong> Pessoa física ou jurídica identificada no momento da contratação.</p>
+        <ul class="clausula__lista">
+          <li>Nome completo / Razão Social: <span class="campo-config">[ a preencher ]</span></li>
+          <li>CPF / CNPJ: <span class="campo-config">[ a preencher ]</span></li>
+          <li>E-mail: <span class="campo-config">[ a preencher ]</span></li>
+          <li>Telefone: <span class="campo-config">[ a preencher ]</span></li>
+        </ul>
+      </section>
+
+      <!-- CLÁUSULA 1 -->
+      <section class="clausula" id="clausula-1">
+        <span class="clausula__numero">Cláusula 1</span>
+        <h2 class="clausula__titulo">Objeto do Contrato</h2>
+        <p class="clausula__texto">O presente contrato estabelece as condições para a prestação de serviços profissionais de fotografia, filmagem, edição e produção audiovisual, conforme o pacote, o orçamento e as especificações acordadas entre as partes.</p>
+        <p class="clausula__texto">A contratação deverá indicar data, local, duração, serviços incluídos, quantidade de profissionais, formato de entrega e demais condições específicas.</p>
+        <p class="clausula__texto">A cobertura poderá compreender eventos, ensaios, festas, formaturas, casamentos, retratos e outras modalidades expressamente contratadas.</p>
+      </section>
+
+      <!-- CLÁUSULA 2 -->
+      <section class="clausula" id="clausula-2">
+        <span class="clausula__numero">Cláusula 2</span>
+        <h2 class="clausula__titulo">Prazos de Entrega</h2>
+        <ul class="clausula__lista">
+          <li>Para serviços de menor complexidade: até <strong>3 (três) dias úteis</strong> a partir do primeiro dia útil seguinte à realização do serviço.</li>
+          <li>Para eventos de maior complexidade (casamentos, aniversários, ensaios de gestantes e similares): até <strong>10 (dez) dias úteis</strong>.</li>
+          <li>Os prazos referem-se aos materiais finais contratados e poderão ser ajustados mediante acordo escrito.</li>
+          <li>Consideram-se dias úteis de segunda a sexta-feira, excluídos feriados.</li>
+          <li>A quantidade de fotografias, vídeos e demais entregáveis será definida na proposta comercial aprovada.</li>
+        </ul>
+      </section>
+
+      <!-- CLÁUSULA 3 -->
+      <section class="clausula" id="clausula-3">
+        <span class="clausula__numero">Cláusula 3</span>
+        <h2 class="clausula__titulo">Condições de Pagamento</h2>
+        <p class="clausula__sub">Estrutura padrão de pagamento</p>
+        <ul class="clausula__lista">
+          <li><strong>50% do valor total antecipadamente</strong>, para confirmação e reserva da data.</li>
+          <li><strong>50% restantes após a realização do evento ou serviço</strong>, conforme vencimento na proposta.</li>
+        </ul>
+        <p class="clausula__texto">A reserva da data somente será confirmada após formalização da contratação e confirmação do pagamento inicial. Serviços adicionais solicitados após a contratação deverão ser previamente orçados e aprovados.</p>
+      </section>
+
+      <!-- CLÁUSULA 4 -->
+      <section class="clausula" id="clausula-4">
+        <span class="clausula__numero">Cláusula 4</span>
+        <h2 class="clausula__titulo">Transporte e Deslocamento</h2>
+        <ul class="clausula__lista">
+          <li>Os custos de deslocamento necessários à execução do serviço são de responsabilidade do CONTRATANTE, quando previstos no orçamento.</li>
+          <li>O transporte (Uber ou equivalente) deverá ser custeado antecipadamente pelo CONTRATANTE.</li>
+          <li>Caso seja necessário transporte adicional, hospedagem ou deslocamento para outra cidade, as despesas serão objeto de acordo específico.</li>
+        </ul>
+      </section>
+
+      <!-- CLÁUSULA 5 -->
+      <section class="clausula" id="clausula-5">
+        <span class="clausula__numero">Cláusula 5</span>
+        <h2 class="clausula__titulo">Cobertura de Eventos e Exclusividade</h2>
+        <p class="clausula__texto">A LIPE.VISION poderá prestar serviços para diferentes estabelecimentos, marcas e organizadores, inclusive durante eventos realizados na mesma data, desde que os compromissos assumidos sejam cumpridos.</p>
+        <div class="clausula__destaque">
+          <strong>A contratação convencional não garante exclusividade profissional.</strong> Em eventos em boates, casas noturnas e festas, o profissional poderá atender outros clientes durante o mesmo período, quando não houver contratação expressa de exclusividade.
+        </div>
+        <p class="clausula__texto">Caso o CONTRATANTE deseje <strong>exclusividade de 100%</strong> da disponibilidade do profissional, deverá solicitá-la antecipadamente. A exclusividade está sujeita à disponibilidade e a um <strong>valor adicional</strong> previamente negociado e aprovado por ambas as partes.</p>
+      </section>
+
+      <!-- CLÁUSULA 6 -->
+      <section class="clausula" id="clausula-6">
+        <span class="clausula__numero">Cláusula 6</span>
+        <h2 class="clausula__titulo">Entrega dos Materiais</h2>
+        <ul class="clausula__lista">
+          <li>As fotografias e os vídeos serão disponibilizados digitalmente, preferencialmente via Google Drive ou outra plataforma previamente informada.</li>
+          <li>O CONTRATANTE receberá um link de acesso para visualizar e baixar os arquivos finais.</li>
+          <li>O prazo de disponibilidade dos arquivos na plataforma de entrega será informado na proposta ou na confirmação da entrega.</li>
+          <li>Após o encerramento do prazo, a LIPE.VISION poderá remover os arquivos, respeitando as obrigações legais aplicáveis.</li>
+        </ul>
+      </section>
+
+      <!-- CLÁUSULA 7 -->
+      <section class="clausula" id="clausula-7">
+        <span class="clausula__numero">Cláusula 7</span>
+        <h2 class="clausula__titulo">Disponibilidade dos Arquivos — 72 Horas</h2>
+        <p class="clausula__texto">Após a comunicação oficial de entrega, as fotografias permanecerão disponíveis para download por até <strong>72 (setenta e duas) horas consecutivas</strong>.</p>
+        <p class="clausula__texto">O CONTRATANTE compromete-se a realizar o download e guardar suas cópias durante esse período.</p>
+        <p class="clausula__texto">A LIPE.VISION não garante armazenamento permanente dos arquivos. Esta cláusula não afasta direitos legais do consumidor nem responsabilidades que não possam ser excluídas por contrato.</p>
+      </section>
+
+      <!-- CLÁUSULA 8 -->
+      <section class="clausula" id="clausula-8">
+        <span class="clausula__numero">Cláusula 8</span>
+        <h2 class="clausula__titulo">Armazenamento Prolongado</h2>
+        <p class="clausula__texto">O serviço convencional não inclui armazenamento permanente ou ilimitado dos materiais. Clientes que desejarem armazenamento por período prolongado poderão contratar um serviço adicional, com valor, duração e condições negociados separadamente.</p>
+        <p class="clausula__texto">O armazenamento prolongado não representa garantia absoluta contra falhas tecnológicas. As responsabilidades e medidas de segurança serão descritas no acordo específico.</p>
+      </section>
+
+      <!-- CLÁUSULA 9 -->
+      <section class="clausula" id="clausula-9">
+        <span class="clausula__numero">Cláusula 9</span>
+        <h2 class="clausula__titulo">Tratamento e Edição das Fotografias</h2>
+        <p class="clausula__texto">As fotografias serão tratadas conforme o estilo visual profissional da LIPE.VISION, podendo incluir ajustes de iluminação, exposição, contraste, enquadramento, cores e correções compatíveis com o serviço contratado. Alterações extraordinárias ou edições especiais deverão ser combinadas previamente.</p>
+      </section>
+
+      <!-- CLÁUSULA 10 -->
+      <section class="clausula" id="clausula-10">
+        <span class="clausula__numero">Cláusula 10</span>
+        <h2 class="clausula__titulo">Direitos Autorais, Imagem e Privacidade</h2>
+        <ul class="clausula__lista">
+          <li>Os direitos autorais sobre os materiais produzidos serão observados conforme a legislação brasileira.</li>
+          <li>O CONTRATANTE poderá utilizar os materiais dentro das finalidades e condições de licença estabelecidas na contratação.</li>
+          <li>A publicação pela LIPE.VISION em portfólio, redes sociais ou materiais promocionais dependerá de autorização adequada e do respeito aos direitos de imagem e à privacidade.</li>
+          <li>O tratamento dos dados pessoais observará a Lei Geral de Proteção de Dados Pessoais (LGPD).</li>
+        </ul>
+      </section>
+
+      <!-- CLÁUSULA 11 -->
+      <section class="clausula" id="clausula-11">
+        <span class="clausula__numero">Cláusula 11</span>
+        <h2 class="clausula__titulo">Responsabilidades das Partes</h2>
+        <p class="clausula__texto">A LIPE.VISION compromete-se a executar os serviços com profissionalismo, zelo técnico e observância das condições estabelecidas.</p>
+        <p class="clausula__texto">O CONTRATANTE compromete-se a fornecer informações corretas sobre local, data, horário, condições de acesso e necessidades específicas do evento. Qualquer alteração relevante de escopo, horário ou local deverá ser formalizada por escrito.</p>
+      </section>
+
+      <!-- CLÁUSULA 12 -->
+      <section class="clausula" id="clausula-12">
+        <span class="clausula__numero">Cláusula 12</span>
+        <h2 class="clausula__titulo">Cancelamento e Remarcação</h2>
+        <p class="clausula__texto">As condições de cancelamento, reagendamento, restituição de valores e eventuais despesas comprovadas serão informadas previamente na proposta comercial e formalizadas entre as partes, observando-se a legislação brasileira e os direitos do consumidor quando aplicáveis.</p>
+      </section>
+
+      <!-- ACEITE -->
+      <section class="aceite" id="aceite" aria-label="Seção de aceite dos termos">
+        <h2 class="aceite__titulo">Aceite dos Termos</h2>
+        <p class="aceite__aviso">Esta página é informativa. O aceite abaixo é apenas ilustrativo e <strong>não constitui uma assinatura digital válida</strong> nem registra consentimento formal. Para formalizar uma contratação real, um documento específico deverá ser gerado e assinado pelas partes.</p>
+
+        <!-- Aceite obrigatório -->
+        <div class="aceite__item">
+          <input type="checkbox" id="aceite-termos" name="aceite-termos" />
+          <label for="aceite-termos">Declaro que li e compreendi os termos de prestação de serviços fotográficos da LIPE.VISION.</label>
+        </div>
+
+        <!-- Autorização de imagem — opções mutuamente exclusivas -->
+        <p style="font-size:0.75rem;color:rgba(245,245,245,0.4);padding:1rem 0 0.25rem;letter-spacing:0.05em;">Autorização de uso de imagem (facultativa):</p>
+        <div class="aceite__radio-group">
+          <div class="aceite__item" style="padding:0.4rem 0">
+            <input type="radio" id="autorizo" name="imagem" value="autorizo" />
+            <label for="autorizo">Autorizo a LIPE.VISION a utilizar as fotografias nas quais minha imagem apareça para divulgação de seu trabalho profissional, portfólio, site oficial e perfil no Instagram, respeitando minha dignidade e privacidade.</label>
+          </div>
+          <div class="aceite__item" style="padding:0.4rem 0">
+            <input type="radio" id="nao-autorizo" name="imagem" value="nao-autorizo" />
+            <label for="nao-autorizo">Não autorizo a divulgação da minha imagem para fins promocionais.</label>
+          </div>
+        </div>
+        <p style="font-size:0.72rem;color:rgba(245,245,245,0.35);margin-top:1rem;line-height:1.6;">A autorização do contratante não implica automaticamente autorização para utilizar imagens de todos os convidados ou participantes de um evento. No caso de crianças e adolescentes, aplicam-se proteções legais específicas.</p>
+      </section>
+
+      <!-- AÇÕES -->
+      <div class="contrato-acoes">
+        <a href="index.html#contato" class="btn btn--primary">
+          <i class="ri-send-plane-line" aria-hidden="true"></i>
+          <span>Solicitar contratação</span>
+        </a>
+        <button class="btn btn--gold" onclick="window.print()">
+          <i class="ri-printer-line" aria-hidden="true"></i>
+          <span>Baixar / Imprimir PDF</span>
+        </button>
+        <a href="index.html" class="btn btn--outline">
+          <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          <span>Voltar ao site</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer style="background:var(--color-dark);border-top:1px solid rgba(255,255,255,0.06);padding:1.5rem 0;text-align:center;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <a href="index.html" style="font-family:var(--font-display);font-size:1.1rem;font-weight:300;letter-spacing:0.08em;color:var(--color-pure-white);">
+        LIPE<span style="color:var(--color-gold)">.VISION</span>
+      </a>
+      <p style="font-size:0.72rem;color:rgba(245,245,245,0.3);">&copy; <span id="anoAtual"></span> LIPE.VISION — Salvador, Bahia, Brasil</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+    // Garantir que as opções de radio sejam mutuamente exclusivas
+    const radios = document.querySelectorAll('input[name="imagem"]');
+    radios.forEach(r => {
+      r.addEventListener('change', () => {
+        radios.forEach(other => { if (other !== r) other.checked = false; });
+      });
+    });
+  </script>
+
+</body>
+</html>

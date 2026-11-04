@@ -455,7 +455,7 @@ h1, h2, h3, h4 {
   }
 }
 
-/* ─── 9. HERO ────────────────────────────────────────────────────────────── */
+/* ─── 9. HERO — IDENTIDADE MINIMALISTA ──────────────────────────────────── */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -486,13 +486,13 @@ h1, h2, h3, h4 {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0,0,0,0.88) 0%,
-    rgba(0,0,0,0.65) 50%,
-    rgba(0,0,0,0.75) 100%
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.58) 50%,
+    rgba(0,0,0,0.70) 100%
   );
 }
 
-/* Partículas decorativas (círculos de luz) */
+/* Partículas decorativas */
 .hero__particles {
   position: absolute;
   inset: 0;
@@ -505,7 +505,7 @@ h1, h2, h3, h4 {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.15;
+  opacity: 0.12;
   animation: particleDrift 8s ease-in-out infinite alternate;
 }
 
@@ -531,60 +531,80 @@ h1, h2, h3, h4 {
   to   { transform: translate(30px, 20px) scale(1.1); }
 }
 
-.hero__content {
+/* ── Conteúdo centralizado ── */
+.hero__content--centered {
   position: relative;
   z-index: 2;
   padding-top: var(--nav-height);
-  max-width: 750px;
+  width: 100%;
+  max-width: var(--container-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.hero__eyebrow {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
+/* Eyebrow centralizado */
+.hero__eyebrow--center {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 1.5rem;
   opacity: 0;
-  animation: fadeInUp 0.8s 1.9s var(--ease-out) forwards;
+  animation: fadeInUp 0.7s 1.8s var(--ease-out) forwards;
 }
 
-.hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 300;
-  line-height: 1.05;
-  color: var(--color-pure-white);
+/* ── Logomarca principal do hero ── */
+.hero__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  line-height: 1;
   margin-bottom: 1.5rem;
-}
-
-.hero__title-line {
-  display: block;
   opacity: 0;
-  animation: fadeInUp 0.8s var(--ease-out) forwards;
+  animation: fadeInUp 0.8s 2.1s var(--ease-out) forwards;
 }
 
-.hero__title-line:nth-child(1) { animation-delay: 2.1s; }
-.hero__title-line:nth-child(2) { animation-delay: 2.3s; }
-.hero__title-line:nth-child(3) { animation-delay: 2.5s; }
+.hero__brand-lipe {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 14vw, 11rem);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--color-pure-white);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+}
 
-.hero__title-line--gold { color: var(--color-gold); font-style: italic; }
+.hero__brand-dot {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 14vw, 11rem);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--color-gold);
+  text-shadow: 0 2px 40px rgba(201,165,90,0.3);
+}
 
-.hero__subtitle {
-  font-size: 1rem;
-  color: rgba(245,245,245,0.65);
-  letter-spacing: 0.08em;
+/* Subtítulo centralizado */
+.hero__subtitle--center {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  color: rgba(245,245,245,0.6);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   margin-bottom: 2.5rem;
   opacity: 0;
-  animation: fadeInUp 0.8s 2.7s var(--ease-out) forwards;
+  animation: fadeInUp 0.7s 2.5s var(--ease-out) forwards;
 }
 
-.hero__actions {
+/* Botões centralizados */
+.hero__actions--center {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
   opacity: 0;
-  animation: fadeInUp 0.8s 2.9s var(--ease-out) forwards;
+  animation: fadeInUp 0.7s 2.8s var(--ease-out) forwards;
 }
 
 /* Indicador de scroll */
@@ -603,7 +623,7 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: rgba(245,245,245,0.4);
   opacity: 0;
-  animation: fadeIn 1s 3.2s forwards;
+  animation: fadeIn 1s 3.1s forwards;
 }
 
 .hero__scroll-line {
@@ -625,14 +645,14 @@ h1, h2, h3, h4 {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  animation: fadeIn 1s 3.4s forwards;
+  animation: fadeIn 1s 3.3s forwards;
 }
 
 .hero__frame-corner {
   position: absolute;
   width: 30px;
   height: 30px;
-  border-color: rgba(201,165,90,0.3);
+  border-color: rgba(201,165,90,0.25);
   border-style: solid;
 }
 
@@ -640,6 +660,14 @@ h1, h2, h3, h4 {
 .hero__frame-corner--tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
 .hero__frame-corner--bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
 .hero__frame-corner--br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+/* Responsive hero */
+@media (max-width: 500px) {
+  .hero__brand-lipe,
+  .hero__brand-dot {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+}
 
 /* ─── 10. MARQUEE ────────────────────────────────────────────────────────── */
 .marquee {
@@ -735,15 +763,8 @@ h1, h2, h3, h4 {
   user-select: none;
 }
 
-/* Moldura dourada da foto */
-.sobre__img-frame {
-  position: absolute;
-  inset: -12px -12px auto auto;
-  width: 60%;
-  height: 60%;
-  border: 1px solid rgba(201,165,90,0.3);
-  pointer-events: none;
-}
+/* Moldura dourada da foto — removida por solicitação */
+.sobre__img-frame { display: none; }
 
 .sobre__stats {
   display: flex;
@@ -790,8 +811,203 @@ h1, h2, h3, h4 {
 }
 
 /* ─── 12. PORTFÓLIO — MURAL MASONRY ─────────────────────────────────────── */
+
+/*
+ * Fundo: parede de tijolinhos escuros com iluminação neon discreta.
+ * Implementado com SVG inline como data-URI para zero requisições extras.
+ */
 .portfolio {
-  background: var(--color-black);
+  background-color: #12121A;
+  background-image:
+    /* Luzes neon — roxo e azul em pontos estratégicos */
+    radial-gradient(ellipse 60% 40% at 15% 30%, rgba(168, 85, 247, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 70%, rgba(56, 189, 248, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 10%, rgba(168, 85, 247, 0.06) 0%, transparent 60%),
+    /* Padrão de tijolinhos via SVG */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Crect x='1' y='1' width='58' height='13' rx='1' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3Crect x='31' y='16' width='28' height='13' rx='1' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3Crect x='1' y='16' width='28' height='13' rx='1' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 60px 30px;
+  background-position: center center, center center, center center, 0 0;
+}
+
+/* ── Suas Fotos seção — posicionada antes do portfólio no CSS para referência ── */
+
+/* ─── 11B. SUAS FOTOS ────────────────────────────────────────────────────── */
+.suas-fotos {
+  background: #0d0d14;
+}
+
+/* Grid de galerias */
+.galerias__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .galerias__grid { grid-template-columns: 1fr; }
+}
+
+/* Card de galeria */
+.galeria__card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--duration-mid) var(--ease-out),
+              border-color var(--duration-mid) var(--ease-out),
+              box-shadow var(--duration-mid) var(--ease-out);
+}
+
+.galeria__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,165,90,0.4);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+}
+
+/* Capa */
+.galeria__capa {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1a1a2e, #0d0d1a);
+  overflow: hidden;
+}
+
+.galeria__capa-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.galeria__card:hover .galeria__capa-img {
+  transform: scale(1.05);
+}
+
+.galeria__capa-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(201,165,90,0.15);
+}
+
+/* Corpo */
+.galeria__body {
+  padding: 1.5rem;
+}
+
+.galeria__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.galeria__cat {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.galeria__status {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+}
+
+.galeria__status--ok   { background: rgba(46,160,67,0.15);  color: #6fcf97; border: 1px solid rgba(46,160,67,0.3); }
+.galeria__status--edit { background: rgba(201,165,90,0.15); color: var(--color-gold); border: 1px solid rgba(201,165,90,0.3); }
+.galeria__status--off  { background: rgba(200,50,50,0.15);  color: #eb5757; border: 1px solid rgba(200,50,50,0.3); }
+
+.galeria__titulo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-pure-white);
+  margin-bottom: 0.4rem;
+}
+
+.galeria__data {
+  font-size: 0.75rem;
+  color: rgba(245,245,245,0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.galeria__desc {
+  font-size: 0.85rem;
+  color: rgba(245,245,245,0.55);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.galeria__btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.68rem;
+}
+
+.galeria__btn--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Aviso de prazo */
+.suas-fotos__aviso {
+  margin-top: var(--space-md);
+}
+
+.suas-fotos__aviso-inner {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  background: rgba(201,165,90,0.06);
+  border: 1px solid rgba(201,165,90,0.2);
+  border-left: 3px solid var(--color-gold);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.suas-fotos__aviso-inner > i {
+  font-size: 1.4rem;
+  color: var(--color-gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.suas-fotos__aviso-inner strong {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.suas-fotos__aviso-inner p {
+  font-size: 0.85rem;
+  color: rgba(245,245,245,0.6);
+  line-height: 1.7;
+}
+
+.suas-fotos__aviso-inner p strong {
+  display: inline;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  letter-spacing: normal;
+  text-transform: none;
+  font-size: inherit;
 }
 
 .portfolio__filters {

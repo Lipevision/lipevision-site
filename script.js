@@ -5,6 +5,100 @@
 
 'use strict';
 
+/* ─── DADOS DAS GALERIAS (SUAS FOTOS) ───────────────────────────────────────
+ *
+ * Para adicionar uma nova galeria, copie um bloco abaixo e ajuste:
+ *   id         → identificador único (string)
+ *   titulo     → nome do evento
+ *   data       → data do evento (ex: "15 de outubro de 2026")
+ *   categoria  → 'festa' | 'casamento' | 'ensaio' | 'formatura' | 'corporativo' | 'outro'
+ *   descricao  → texto breve descrevendo o evento (opcional)
+ *   capa       → caminho relativo de uma imagem de capa, ou null para usar gradiente
+ *   link       → URL completa da pasta no Google Drive
+ *   status     → 'disponivel' | 'em_edicao' | 'expirado'
+ * ─────────────────────────────────────────────────────────────────────────── */
+const GALERIAS = [
+  {
+    id: 'galeria-01',
+    titulo: 'Galeria 01',
+    data: 'Em breve',
+    categoria: 'evento',
+    descricao: 'Registro fotográfico produzido pela LIPE.VISION.',
+    capa: null,
+    link: 'https://drive.google.com/drive/folders/1aJgV4nBBGd6rC6-mVU258do7MlwJUijn',
+    status: 'disponivel',
+  },
+  {
+    id: 'galeria-02',
+    titulo: 'Galeria 02',
+    data: 'Em breve',
+    categoria: 'evento',
+    descricao: 'Registro fotográfico produzido pela LIPE.VISION.',
+    capa: null,
+    link: 'https://drive.google.com/drive/folders/1HsUPmEMhGFsM7gbNkiW-KlIVMYZl-U4G',
+    status: 'disponivel',
+  },
+];
+
+/* ─── RENDER DAS GALERIAS ────────────────────────────────────────────────── */
+const CATEGORIA_LABEL = {
+  festa: 'Festa', casamento: 'Casamento', ensaio: 'Ensaio',
+  formatura: 'Formatura', corporativo: 'Corporativo', evento: 'Evento', outro: 'Outros',
+};
+
+const STATUS_LABEL = {
+  disponivel: 'Disponível',
+  em_edicao:  'Em edição',
+  expirado:   'Expirado',
+};
+
+function initGalerias() {
+  const grid = $('#galeriasGrid');
+  if (!grid) return;
+
+  GALERIAS.forEach(g => {
+    const card = document.createElement('article');
+    card.className = 'galeria__card';
+    card.setAttribute('data-status', g.status);
+
+    const capaHTML = g.capa
+      ? `<img src="${g.capa}" alt="Capa da ${g.titulo}" class="galeria__capa-img" loading="lazy" decoding="async" />`
+      : `<div class="galeria__capa-placeholder" aria-hidden="true"><i class="ri-image-2-line"></i></div>`;
+
+    const statusClass = g.status === 'disponivel' ? 'galeria__status--ok'
+                      : g.status === 'em_edicao'   ? 'galeria__status--edit'
+                      : 'galeria__status--off';
+
+    const btnDisabled = g.status === 'expirado';
+
+    card.innerHTML = `
+      <div class="galeria__capa">${capaHTML}</div>
+      <div class="galeria__body">
+        <div class="galeria__meta">
+          <span class="galeria__cat">${CATEGORIA_LABEL[g.categoria] || g.categoria}</span>
+          <span class="galeria__status ${statusClass}">${STATUS_LABEL[g.status] || g.status}</span>
+        </div>
+        <h3 class="galeria__titulo">${g.titulo}</h3>
+        ${g.data ? `<p class="galeria__data"><i class="ri-calendar-line" aria-hidden="true"></i> ${g.data}</p>` : ''}
+        ${g.descricao ? `<p class="galeria__desc">${g.descricao}</p>` : ''}
+        <a
+          href="${g.link}"
+          class="btn btn--primary galeria__btn${btnDisabled ? ' galeria__btn--disabled' : ''}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Acessar fotografias da ${g.titulo} no Google Drive"
+          ${btnDisabled ? 'aria-disabled="true" tabindex="-1"' : ''}
+        >
+          <span>Acessar fotografias</span>
+          <i class="ri-folder-open-line" aria-hidden="true"></i>
+        </a>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
 /* ─── DADOS DO PORTFÓLIO ─────────────────────────────────────────────────── */
 /**
  * Portfólio com fotografias reais de LIPE.VISION.
@@ -1585,6 +1679,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initScrollReveal();
   initCounters();
+  initGalerias();
   initPortfolio();
   initLightbox();
   initFab();
