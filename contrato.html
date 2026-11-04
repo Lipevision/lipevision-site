@@ -13,8 +13,9 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 
   <!-- jsPDF 2.5.1 — MIT License — geração de PDF no navegador -->
+  <!-- Hash SRI verificado via API cdnjs: https://api.cdnjs.com/libraries/jspdf/2.5.1?fields=sri -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-          integrity="sha512-J4oYTzRKkMIWS7rJ3oIJ2bHJNnTkJPTCEEjRKjSKGNzOqnYQBvU61yqXrHlqkEEzGXMoS63bwD88u5vLbxvQ=="
+          integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
@@ -295,6 +296,26 @@ ul{list-style:none}
 /* ── SPINNER ── */
 .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,.2);border-top-color:var(--black);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── TOAST DE FEEDBACK ── */
+.toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(4px);
+  z-index:9999;
+  background:var(--dark2);border:1px solid rgba(255,255,255,.1);
+  color:var(--wh);font-family:var(--font-s);font-size:.78rem;font-weight:500;
+  padding:.85rem 1.5rem;border-radius:4px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  display:flex;align-items:center;gap:.6rem;
+  opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;
+  max-width:calc(100vw - 2rem);text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.toast--ok   { border-color:rgba(34,197,94,.4); }
+.toast--ok i { color:var(--green); }
+.toast--err  { border-color:rgba(239,68,68,.4); }
+.toast--err i{ color:var(--red); }
+.toast--info { border-color:rgba(201,165,90,.4); }
+.toast--info i{ color:var(--gold); }
 
 /* ── FOOTER ── */
 .ftr{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 0}
@@ -724,6 +745,12 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- ═══════════ TOAST ═══════════ -->
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+  <i class="ri-information-line" aria-hidden="true" id="toastIcon"></i>
+  <span id="toastMsg"></span>
+</div>
+
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="ftr">
   <div class="container ftr__in">
@@ -1135,7 +1162,7 @@ function construirPDF(dados, informativo) {
     doc.roundedRect(mL, y, TW, 20, 1.5, 1.5, 'FD');
     doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...COR_GOLD);
     doc.text('DOCUMENTO COM ACEITE ELETRÔNICO — MINUTA INICIAL', mL+4, y+6);
-    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor([80,60,10]);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(80,60,10);
     sp('Este documento não equivale a uma assinatura digital certificada. Para validade jurídica plena, recomenda-se revisão por advogado.', TW-8)
       .forEach((l,i)=>{ doc.text(l, mL+4, y+11+i*4); });
   } else {
@@ -1145,7 +1172,7 @@ function construirPDF(dados, informativo) {
     doc.roundedRect(mL, y, TW, 20, 1.5,1.5,'FD');
     doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor(...COR_GOLD);
     doc.text('DOCUMENTO INFORMATIVO — MINUTA INICIAL', mL+4, y+6);
-    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor([80,60,10]);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(80,60,10);
     sp('Este é um documento informativo. Para formalizar uma contratação, preencha o formulário em lipevision.github.io/contrato.html',TW-8)
       .forEach((l,i)=>{ doc.text(l,mL+4,y+11+i*4); });
   }
@@ -1155,28 +1182,78 @@ function construirPDF(dados, informativo) {
 }
 
 /* ─────────────────────────────────
-   DOWNLOAD PDF INFORMATIVO
+   TOAST ELEGANTE (sem alert nativo)
 ───────────────────────────────── */
-function downloadInfo(btnEl) {
-  if (!window.jspdf) { alert('PDF ainda carregando. Aguarde um instante.'); return; }
-  if(btnEl){ btnEl.disabled=true; btnEl.innerHTML='<span class="spin"></span> Gerando…'; }
-  setTimeout(()=>{
-    try{
-      const doc = construirPDF({}, true);
-      doc.save('LIPEVISION_Contrato_Informativo.pdf');
-    } catch(e){
-      console.error(e);
-      alert('Não foi possível gerar o PDF. Desative bloqueadores de pop-up para este site.');
-    } finally{
-      if(btnEl){ btnEl.disabled=false; btnEl.innerHTML='<i class="ri-download-2-line" aria-hidden="true"></i> Baixar Contrato em PDF'; }
-    }
-  }, 80);
+let _toastTimer = null;
+function toast(msg, tipo /* 'ok'|'err'|'info' */, dur=4000) {
+  const el   = document.getElementById('toast');
+  const icon = document.getElementById('toastIcon');
+  const txt  = document.getElementById('toastMsg');
+  if (!el) return;
+
+  const icons = { ok:'ri-checkbox-circle-line', err:'ri-error-warning-line', info:'ri-information-line' };
+  icon.className = `${icons[tipo]||icons.info}`;
+  txt.textContent = msg;
+  el.className = `toast toast--${tipo} show`;
+
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => { el.classList.remove('show'); }, dur);
 }
 
-['btnDownloadInfo','btnDownloadHero','btnDownloadContrato'].forEach(id=>{
-  document.getElementById(id)?.addEventListener('click', function(){
-    downloadInfo(this);
+/* ─────────────────────────────────
+   AGUARDAR jsPDF CARREGAR
+   (resolve quando window.jspdf estiver pronto,
+    rejeita após timeout de 8s)
+───────────────────────────────── */
+function esperarJsPDF(timeoutMs = 8000) {
+  return new Promise((resolve, reject) => {
+    if (window.jspdf && window.jspdf.jsPDF) { resolve(); return; }
+    const inicio = Date.now();
+    const tick = () => {
+      if (window.jspdf && window.jspdf.jsPDF) { resolve(); return; }
+      if (Date.now() - inicio > timeoutMs) { reject(new Error('jsPDF não carregou.')); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   });
+}
+
+/* ─────────────────────────────────
+   HELPERS DE ESTADO DO BOTÃO
+───────────────────────────────── */
+function btnLoading(el, msg) {
+  if (!el) return;
+  el._txtOriginal = el.innerHTML;
+  el.disabled = true;
+  el.innerHTML = `<span class="spin" aria-hidden="true"></span><span>${msg}</span>`;
+}
+function btnRestaurar(el) {
+  if (!el || !el._txtOriginal) return;
+  el.disabled = false;
+  el.innerHTML = el._txtOriginal;
+  delete el._txtOriginal;
+}
+
+/* ─────────────────────────────────
+   DOWNLOAD PDF INFORMATIVO
+───────────────────────────────── */
+async function downloadInfo(btnEl) {
+  btnLoading(btnEl, 'Preparando seu contrato…');
+  try {
+    await esperarJsPDF();
+    const doc = construirPDF({}, true);
+    doc.save('LIPEVISION_Contrato_Informativo.pdf');
+    toast('Seu contrato está pronto.', 'ok');
+  } catch (e) {
+    console.error('[LIPE.VISION] PDF informativo:', e);
+    toast('Não foi possível preparar o documento. Tente novamente.', 'err', 6000);
+  } finally {
+    btnRestaurar(btnEl);
+  }
+}
+
+['btnDownloadInfo','btnDownloadHero','btnDownloadContrato'].forEach(id => {
+  document.getElementById(id)?.addEventListener('click', function() { downloadInfo(this); });
 });
 
 /* ─────────────────────────────────
@@ -1184,30 +1261,31 @@ function downloadInfo(btnEl) {
 ───────────────────────────────── */
 let ultimoDados = null;
 
-document.getElementById('contratoForm').addEventListener('submit', e=>{
+document.getElementById('contratoForm').addEventListener('submit', async e => {
   e.preventDefault();
-  if(!validar()) return;
+  if (!validar()) return;
 
   const btnEnviar = document.getElementById('btnEnviar');
-  btnEnviar.disabled=true;
-  btnEnviar.innerHTML='<span class="spin"></span> Gerando PDF…';
+  btnLoading(btnEnviar, 'Preparando seu contrato…');
 
-  setTimeout(()=>{
-    try{
-      const dados = coletar();
-      ultimoDados  = dados;
+  try {
+    await esperarJsPDF();
+    const dados = coletar();
+    ultimoDados = dados;
 
-      // Gera PDF personalizado
-      const doc = construirPDF(dados, false);
-      const nomeArq = `LIPEVISION_Contrato_${dados.nome.replace(/\s+/g,'_')}_${dados.numero}.pdf`;
-      doc.save(nomeArq);
+    // Gera PDF personalizado
+    const doc = construirPDF(dados, false);
+    const nomeArq = `LIPEVISION_Contrato_${dados.nome.replace(/\s+/g,'_')}_${dados.numero}.pdf`;
+    doc.save(nomeArq);
 
-      // Atualiza resumo na tela de confirmação
-      const dl = document.getElementById('summaryDl');
-      dl.innerHTML = [
-        ['Nº Contrato', dados.numero],
-        ['Nome',        dados.nome],
-        ['Serviço',     dados.tipo],
+    toast('Seu contrato está pronto.', 'ok');
+
+    // Atualiza resumo
+    const dl = document.getElementById('summaryDl');
+    dl.innerHTML = [
+      ['Nº Contrato', dados.numero],
+      ['Nome',        dados.nome],
+      ['Serviço',     dados.tipo],
         ['Evento',      dados.data],
         ['Local',       dados.local],
         ['Valor',       dados.valor],
@@ -1245,20 +1323,29 @@ document.getElementById('contratoForm').addEventListener('submit', e=>{
       }, 1200);
 
     } catch(err){
-      console.error(err);
-      alert('Erro ao gerar o PDF. Verifique se bloqueadores de pop-up estão desativados para este site.');
-    } finally{
-      btnEnviar.disabled=false;
-      btnEnviar.innerHTML='<i class="ri-whatsapp-line"></i> Gerar PDF e Enviar pelo WhatsApp';
+      console.error('[LIPE.VISION] PDF contrato:', err);
+      toast('Não foi possível preparar o documento. Tente novamente.', 'err', 6000);
+    } finally {
+      btnRestaurar(btnEnviar);
     }
-  }, 80);
+  // Fecha o addEventListener — NÃO há setTimeout externo; o submit agora é async
 });
 
 /* ── Baixar PDF novamente ── */
-document.getElementById('btnDlFinal')?.addEventListener('click', ()=>{
-  if(!ultimoDados) return;
-  const doc = construirPDF(ultimoDados, false);
-  doc.save(`LIPEVISION_Contrato_${ultimoDados.nome.replace(/\s+/g,'_')}_${ultimoDados.numero}.pdf`);
+document.getElementById('btnDlFinal')?.addEventListener('click', async function() {
+  if (!ultimoDados) return;
+  btnLoading(this, 'Preparando…');
+  try {
+    await esperarJsPDF();
+    const doc = construirPDF(ultimoDados, false);
+    doc.save(`LIPEVISION_Contrato_${ultimoDados.nome.replace(/\s+/g,'_')}_${ultimoDados.numero}.pdf`);
+    toast('Seu contrato está pronto.', 'ok');
+  } catch(e) {
+    console.error('[LIPE.VISION] Re-download:', e);
+    toast('Não foi possível preparar o documento. Tente novamente.', 'err', 6000);
+  } finally {
+    btnRestaurar(this);
+  }
 });
 
 /* ── Nova contratação ── */
